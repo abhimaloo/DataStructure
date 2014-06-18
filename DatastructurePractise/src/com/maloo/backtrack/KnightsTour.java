@@ -155,6 +155,7 @@ public class KnightsTour {
                ,{0,0,0,0,0,0,0,0}};
 
        tour(board,1,new Point(0,0));
+       printBoard(board);
 
 
    }
