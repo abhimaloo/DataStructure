@@ -32,6 +32,7 @@ public class Sudoku {
        return true;
     }
 
+
     public static boolean usedInBox(int [][]board, int boxStartRow, int boxStartCol, int number)
     {
         for (int row = 0; row < 3; row++)
