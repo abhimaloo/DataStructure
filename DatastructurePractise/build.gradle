@@ -1,0 +1,29 @@
+apply plugin: 'idea'
+apply plugin: 'java'
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }
+    }
+}
+
+
+idea {
+    project {
+        jdkName = '1.7'
+        languagelevel = '1.7'
+    }
+
+    module {
+        excludeDirs = [file(".gradle")]
+        ["build","gradle",".idea"].each{
+            excludeDirs<<file(it)
+        }
+        println(excludeDirs)
+    }
+
+
+}
+
