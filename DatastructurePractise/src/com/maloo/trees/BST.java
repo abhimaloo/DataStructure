@@ -362,23 +362,21 @@ public class BST<T extends Comparable<T>> {
      * @param root
      * @return
      */
-    public Node<T> mirror(Node<T> root) {
+    public void mirror(Node<T> root) {
         //if reach null return the same root
         if(root ==null){
-            return root;
+            return ;
         }
 
         //go to leftmost element
-        root.left = mirror(root.left);  // this is to make sure the pointer changes are getting reflected
+        mirror(root.left);
         //go to right element
-        root.right = mirror(root.right); // this is to make sure the pointer changes are getting reflected
+        mirror(root.right);
 
         // while popping out swap the left and right pointer
         Node<T> temp = root.left;
         root.left = root.right;
         root.right = temp;
-        //return the root
-        return root;
     }
 
 
@@ -447,7 +445,7 @@ public class BST<T extends Comparable<T>> {
         bst.insert(7);
         bst.insert(6);
 
-        bst.root = bst.mirror(bst.root);
+       bst.mirror(bst.root);
 
 
 
