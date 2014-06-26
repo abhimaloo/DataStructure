@@ -357,6 +357,60 @@ public class BST<T extends Comparable<T>> {
 
     }
 
+    /**
+     *
+     * @param root
+     * @return
+     */
+    public Node<T> mirror(Node<T> root) {
+        //if reach null return the same root
+        if(root ==null){
+            return root;
+        }
+
+        //go to leftmost element
+        root.left = mirror(root.left);  // this is to make sure the pointer changes are getting reflected
+        //go to right element
+        root.right = mirror(root.right); // this is to make sure the pointer changes are getting reflected
+
+        // while popping out swap the left and right pointer
+        Node<T> temp = root.left;
+        root.left = root.right;
+        root.right = temp;
+        //return the root
+        return root;
+    }
+
+
+    public static boolean isBST(Node<Integer> root, int min, int max) {
+        boolean success = false;
+        if(root.data > min && root.data <max ){
+            success = true;
+            if(root.left!=null){
+                if(root.data>root.left.data) {
+                    success = success && isBST(root.left, min,root.data);
+                }else{
+                    return false;
+                }
+            }
+
+            if(root.right!=null && success){
+                if(root.data<root.right.data){
+                    success = success && isBST(root.right, root.data,max);
+                } else{
+                    return false;
+                }
+            }
+
+        } else{
+            success = false;
+        }
+        return success;
+    }
+
+
+
+
 
     public static void main(String args[]) {
         BST<Integer> bst  = new BST<Integer>();
@@ -393,13 +447,11 @@ public class BST<T extends Comparable<T>> {
         bst.insert(7);
         bst.insert(6);
 
-        BST<Integer> bst2  = new BST<Integer>();
+        bst.root = bst.mirror(bst.root);
 
-        bst2.insert(2);
-        bst2.insert(3);
-        bst2.insert(9);
 
-        System.out.println("found :"+bst.containsTree(bst.root,bst2.root));
+
+        System.out.println("found :");
 
 
     }
