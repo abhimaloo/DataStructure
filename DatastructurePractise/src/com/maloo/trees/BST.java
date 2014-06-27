@@ -444,15 +444,21 @@ public class BST<T extends Comparable<T>> {
         bst.insert(8);
         bst.insert(7);
         bst.insert(6);
+        bst.mirror(bst.root);
 
-       bst.mirror(bst.root);
+
+
 
 
 
         System.out.println("found :");
 
 
+
+
     }
+
+
 
 }
 
