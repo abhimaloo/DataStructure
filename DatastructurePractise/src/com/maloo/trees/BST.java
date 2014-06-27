@@ -175,14 +175,14 @@ public class BST<T extends Comparable<T>> {
        return false;
     }
 
+
     public boolean isBalanced(Node<T> root) {
         if(root == null) {
             return false;
         }
-
-
       return !(java.lang.Math.abs(findMaxDepth(root,0)-findMinDepth(root,0)) >1);
     }
+
 
     public int findMaxDepth(Node<T> root, int currentDepth) {
 
