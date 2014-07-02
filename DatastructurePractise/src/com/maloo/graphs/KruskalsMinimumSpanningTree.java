@@ -8,6 +8,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
+ * Implementation of Kruskal's Algorithm
  * Created by abhishekm787 on 7/2/14.
  */
 public class KruskalsMinimumSpanningTree {
