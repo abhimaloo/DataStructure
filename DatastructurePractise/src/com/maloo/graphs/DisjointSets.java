@@ -32,14 +32,7 @@ public class DisjointSets {
         //if root1 is less than root 2 that means, size wise root1 is bigger
         //hence root1 should be assigned as parent of root1 and size of root1 should get incremented too
 
-        if(!source.containsKey(root1)){
-            addSet(root1);
-        }
-
-        if(!source.containsKey(root2)){
-            addSet(root2);
-        }
-
+        //find the absolute root of the passed in nodes
         Integer rootOfroot1 =  find(root1);
         Integer rootOfroot2 =  find(root2);
 
@@ -48,14 +41,16 @@ public class DisjointSets {
             return ;
         }
 
+        //if rootodroot1 is smaller that it means its bigegr in size
+        //hence append the smaller tree to the bigger one
         if(source.get(rootOfroot1) < source.get(rootOfroot2)){
 
-            source.put(root1, source.get(root1) + source.get(root2));
-            source.put(root2, root1);
+            source.put(rootOfroot1, source.get(rootOfroot1) + source.get(rootOfroot2));
+            source.put(rootOfroot2, rootOfroot1);
 
         } else {
-            source.put(root2, source.get(root2) + source.get(root1));
-            source.put(root1, root2);
+            source.put(rootOfroot2, source.get(rootOfroot2) + source.get(rootOfroot1));
+            source.put(rootOfroot1, rootOfroot2);
         }
     }
 

@@ -31,23 +31,14 @@ public class KruskalsMinimumSpanningTree {
         // data structure to make sure there is no cycle
         DisjointSets ds = new DisjointSets();
 
-        //Initialize pick first edge
-        Graph.Edge firstEdge  = universe.get(0);
-        //setup the first two vertices
-        ds.union(firstEdge.from, firstEdge.to);
-
-        //add it to mould
-        mould.add(firstEdge);
-
-        //remove the cheapest edge
-        universe.remove(firstEdge);
 
         //iterate through edges
         for(Graph.Edge edge: universe){
             // make sure the root of edge which is being iterated is not same as of first edge
-             if(ds.find(edge.to) != ds.find(firstEdge.to)){
+            // we do not consider directions
+             if(!(ds.find(edge.to) == ds.find(edge.from) ) ){
                  // add the "to" node to the disjoint set
-                 ds.union(edge.to,firstEdge.to);
+                 ds.union(edge.to,edge.from);
                  //add the edge to the mould
                  mould.add(edge);
              }
@@ -63,9 +54,11 @@ public class KruskalsMinimumSpanningTree {
 
         g.addEdge(1,2,1); // edge between vertex label 1 to 2 with weight 1
         g.addEdge(2,3,6); // edge between vertex label 2 to 3 with weight 6
-        g.addEdge(2,4,3); // edge between vertex label 2 to 4 with weight 2
-        g.addEdge(1,4,2); // edge between vertex label 1 to 4 with weight 4
-        g.addEdge(4,3,8); // edge between vertex label 4 to 3 with weight 3
+        g.addEdge(2,4,2); // edge between vertex label 2 to 4 with weight 2
+        g.addEdge(1,4,4); // edge between vertex label 1 to 4 with weight 4
+        g.addEdge(4,3,3); // edge between vertex label 4 to 3 with weight 3
+
+
 
 
         for(Graph.Edge e: minimumSpanningTree(g))  // shortest path should be 1->2->4->3
