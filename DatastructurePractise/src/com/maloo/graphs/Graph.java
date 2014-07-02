@@ -3,6 +3,7 @@ package com.maloo.graphs;
 import java.util.*;
 
 /**
+ * General representation of a graph using adjancency List
  * Created by abhishekm787 on 6/30/14.
  */
 public class Graph {
@@ -92,72 +93,6 @@ public class Graph {
    }
 
 
-   public List<Edge> dijkstraShortestPath(int sourceVertex, int destinationVertex) {
-       Set<Integer> mould = new HashSet<>();
-       Set<Integer> universe = new HashSet<>();
-       universe.addAll(getAllVertex());
-
-       Map<Integer,List<Edge>> shortestPath = new HashMap<>();
-       final Map<Integer,Integer> shortestCost = new HashMap<>();
-
-       mould.add(sourceVertex);
-       universe.remove(sourceVertex);
-       shortestPath.put(sourceVertex,new ArrayList<Edge>());
-       shortestCost.put(sourceVertex,0);
-
-       PriorityQueue<Edge> heap = new PriorityQueue<>(universe.size(),new Comparator<Edge>(){
-
-           @Override
-           public int compare(Edge e1, Edge e2) {
-
-               return Integer.compare(e1.weight+shortestCost.get(e1.from), e2.weight+shortestCost.get(e2.from));
-           }
-       });
-
-       while(!universe.isEmpty()) {
-           // go through all the vertices of the mould
-           for(int vertex: mould){
-               // check all outgoing edges
-
-                for(Edge edge: getEdges(vertex)) {
-                    // add the edge which is not targetting to a edge present in the mould
-                    if(!mould.contains(edge.to)){
-                        heap.add(edge);
-                    }
-                }
-           }
-
-           //this will find the next edge to be included which has minimum shotestCost till origin +weight
-           //remove it from the heap
-           Edge target = null;
-           while(true) {
-               target = heap.remove();
-               if(!mould.contains(target.to)){
-                   break;
-               }
-           }
-
-
-           // remove the target vertex from universe
-           universe.remove(target.to);
-           // add it to mould
-           mould.add(target.to);
-
-           //update the shortest path
-           List<Edge> shortestPathForTarget = new ArrayList<>();
-           shortestPathForTarget.addAll(shortestPath.get(target.from));
-           shortestPathForTarget.add(target);
-           shortestPath.put(target.to,shortestPathForTarget);
-
-           // update the shortest cost
-           shortestCost.put(target.to, shortestCost.get(target.from) + target.weight );
-
-       }
-
-       return shortestPath.get(destinationVertex);
-   }
-
-
     public static void main(String[] args) {
         Graph g = new Graph();
 
@@ -167,11 +102,7 @@ public class Graph {
         g.addEdge(1,4,4);
         g.addEdge(4,3,3);
 
-
-        for(Edge e: g.dijkstraShortestPath(1,3))
-        {
-            System.out.println(e.from);
-        }
+        g.bfs(1);
     }
 
 
