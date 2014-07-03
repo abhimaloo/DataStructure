@@ -5,7 +5,14 @@ import com.maloo.trees.BST;
 import static  com.maloo.trees.BST.Node;
 
 public class TreeToList {
-
+    /**
+     * This method is the core method which is getting called recursively
+     * It gets the list from left sub tree, and right subtree
+     * finally appends leftlist<->root<->rightList in recursive manner
+     *
+     * @param root
+     * @return
+     */
     public static Node<Integer> treeToList(Node<Integer> root) {
         //for base case ...  which is leaves
         if(root ==null) {
@@ -32,6 +39,13 @@ public class TreeToList {
         return leftList;
     }
 
+    /**
+     * this method appends the two circular linked list
+     * given the heads of both circular linked list
+     * @param a
+     * @param b
+     * @return
+     */
     private static Node<Integer> append(Node<Integer> a, Node<Integer> b) {
         //if either of them are null return the one which is not null
         if(a==null){
@@ -56,12 +70,21 @@ public class TreeToList {
         return a;
     }
 
+    /**
+     * It establishes the bidirectional link between
+     * @param a
+     * @param b
+     */
     private static void join(Node<Integer> a, Node<Integer> b) {
         // creating the link
         a.right= b;
         b.left = a;
     }
 
+    /**
+     * prints a double linked list
+     * @param head
+     */
     public static void printList(Node<Integer> head) {
         Node<Integer> current = head;
 
