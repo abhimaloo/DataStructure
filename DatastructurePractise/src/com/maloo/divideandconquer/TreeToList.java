@@ -1,5 +1,8 @@
-package com.maloo.trees;
+package com.maloo.divideandconquer;
 
+
+import com.maloo.trees.BST;
+import static  com.maloo.trees.BST.Node;
 
 public class TreeToList {
 

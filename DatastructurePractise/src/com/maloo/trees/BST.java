@@ -453,13 +453,13 @@ public class BST<T extends Comparable<T>> {
 
     }
 
-
+    public static class Node<T extends Comparable<T>> {
+        public T data;
+        public Node<T> left;
+        public Node<T> right;
+    }
 
 }
 
-class Node<T extends Comparable<T>> {
-    public T data;
-    public Node<T> left;
-    public Node<T> right;
-}
+
 
