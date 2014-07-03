@@ -6,7 +6,7 @@ import java.util.LinkedList;
  * This is a binary search tree implementation
  */
 public class BST<T extends Comparable<T>> {
-    private Node<T> root;
+    public Node<T> root;
 
     public void insert(T data) {
 
@@ -445,11 +445,6 @@ public class BST<T extends Comparable<T>> {
         bst.insert(7);
         bst.insert(6);
         bst.mirror(bst.root);
-
-
-
-
-
 
         System.out.println("found :");
 
