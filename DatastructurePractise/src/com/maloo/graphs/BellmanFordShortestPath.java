@@ -51,20 +51,14 @@ public class BellmanFordShortestPath {
             }
         }
 
-      int shortestCost = Integer.MAX_VALUE;
-      for( int i= 0; i <n; i ++){
-          if(cost[i][destinationVertex] < shortestCost){
-              shortestCost = cost[i][destinationVertex];
-          }
-       }
-
-        System.out.println("Shortest Cost : "+ shortestCost);
+      System.out.println("Shortest Cost : "+ cost[n-1][destinationVertex]);
 
       List<Graph.Edge> shortestPath = new ArrayList<>();
       while(true) {
           if(destinationVertex == sourceVertex){
               break;
           }
+
           Graph.Edge e = retrackt[n-1][destinationVertex];
           shortestPath.add(e);
           destinationVertex = e.from;
