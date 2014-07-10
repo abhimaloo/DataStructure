@@ -16,6 +16,16 @@ public class Graph {
        }
    }
 
+   public Set<Edge> getInboundEdges(int vertex) {
+       Set<Edge> neighbours = new HashSet<>();
+       for(Edge e: getAllEdges()) {
+           if(e.to == vertex){
+               neighbours.add(e);
+           }
+       }
+
+       return neighbours;
+   }
    public List<Edge> getEdges(int vertex) {
        return store.get(vertex);
    }
@@ -31,6 +41,10 @@ public class Graph {
        }
 
        return response;
+   }
+
+   public int getVerticesCount(){
+      return getAllVertex().size();
    }
 
    public boolean contains(int vertex) {
