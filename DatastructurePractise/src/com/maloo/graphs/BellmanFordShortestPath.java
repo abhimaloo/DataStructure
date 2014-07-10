@@ -19,12 +19,12 @@ public class BellmanFordShortestPath {
      * @param destinationVertex
      * @return
      */
-    public static int findShortestPath(Graph g, int sourceVertex, int destinationVertex){
+    public static List<Graph.Edge> findShortestPath(Graph g, int sourceVertex, int destinationVertex){
 
         int n = g.getVerticesCount();
         //keeping space for 1 extra cycle to detect a negative cycle
         int [][]cost = new int[n+1][n];
-        Map<Integer,Graph.Edge> retrackt = new HashMap<>();
+        Graph.Edge[][] retrackt = new Graph.Edge[n+1][n];
 
         for( Integer i: g.getAllVertex()) {
             cost[0][i] = i!=sourceVertex ? Integer.MAX_VALUE: 0;
@@ -58,24 +58,38 @@ public class BellmanFordShortestPath {
           }
        }
 
-      return shortestCost;
+        System.out.println("Shortest Cost : "+ shortestCost);
+
+      List<Graph.Edge> shortestPath = new ArrayList<>();
+      while(true) {
+          if(destinationVertex == sourceVertex){
+              break;
+          }
+          Graph.Edge e = retrackt[n-1][destinationVertex];
+          shortestPath.add(e);
+          destinationVertex = e.from;
+      }
+
+      return shortestPath;
 
     }
 
-    private static int getMinCostFromNeighbours(final int[][] cost, int v, Graph g, final int sourceVertex, final int i, Map<Integer,Graph.Edge> retrackt) {
+    private static int getMinCostFromNeighbours(final int[][] cost, int v, Graph g, final int sourceVertex, final int i, Graph.Edge[][] retrackt) {
         Set<Graph.Edge> inboundEdges = g.getInboundEdges(v);
+
+        int minimum  = Integer.MAX_VALUE;
         PriorityQueue<Integer> heap = new PriorityQueue<>();
 
         for(Graph.Edge edge: inboundEdges) {
 
-            heap.add(cost[i-1][edge.from]!=Integer.MAX_VALUE?cost[i-1][edge.from] + edge.weight: Integer.MAX_VALUE);
-
+            if(minimum > (cost[i-1][edge.from]!=Integer.MAX_VALUE?cost[i-1][edge.from] + edge.weight: Integer.MAX_VALUE)) {
+               minimum =  (cost[i-1][edge.from]!=Integer.MAX_VALUE?cost[i-1][edge.from] + edge.weight: Integer.MAX_VALUE);
+               retrackt[i][v] = edge;
+            }
 
         }
 
-        Integer min = heap.remove();
-
-        return min;
+        return minimum;
     }
 
     public static void main(String[] args) {
@@ -88,6 +102,10 @@ public class BellmanFordShortestPath {
         g.addEdge(1,4,1); // edge between vertex label 4 to 3 with weight 3
         g.addEdge(4,3,4); // edge between vertex label 4 to 3 with weight 3
 
-        System.out.println(findShortestPath(g, 0, 3));
+        for(Graph.Edge e: findShortestPath(g, 0, 3))  // shortest path should be 1->2->4->3
+        {
+            System.out.println(e.from + "->" +e.to);
+        }
+
     }
 }
