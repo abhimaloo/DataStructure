@@ -68,6 +68,44 @@ public class BellmanFordShortestPath {
 
     }
 
+    public static int[][] findShortestPathReturnCost(Graph g, int sourceVertex){
+
+        int n = g.getVerticesCount();
+        //keeping space for 1 extra cycle to detect a negative cycle
+        int [][]cost = new int[n+1][n];
+        Graph.Edge[][] retrackt = new Graph.Edge[n+1][n];
+
+        for( Integer i: g.getAllVertex()) {
+            cost[0][i] = i!=sourceVertex ? Integer.MAX_VALUE: 0;
+        }
+
+        for( int i =1; i <=n; i++) {
+            for( int v = 0; v<n; v++ ) {
+
+                Set<Graph.Edge> inboundEdges = g.getInboundEdges(v);
+                if(inboundEdges.size() == 0){
+                    cost[i][v] = cost[i-1][v];
+                } else{
+                    cost[i][v] = Math.min(cost[i-1][v], getMinCostFromNeighbours(cost,v,g,sourceVertex, i, retrackt));
+                }
+
+            }
+        }
+
+        //Detect negative cycle
+        // if cost[n-1][v] != cost[n][v] that means a negative cycle is present
+        for( int i= 0; i <n; i ++){
+            if(cost[n-1][i] != cost[n][i] ){
+                throw new RuntimeException("Negative Cycle detected");
+            }
+        }
+
+
+        return cost;
+
+    }
+
+
     private static int getMinCostFromNeighbours(final int[][] cost, int v, Graph g, final int sourceVertex, final int i, Graph.Edge[][] retrackt) {
         Set<Graph.Edge> inboundEdges = g.getInboundEdges(v);
 

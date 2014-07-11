@@ -30,6 +30,43 @@ public class Graph {
        return store.get(vertex);
    }
 
+   public Edge findEdge(int vertex1, int vertex2) {
+       for(Edge edge: getEdges(vertex1)) {
+           if(edge.to == vertex2){
+               return edge;
+           }
+       }
+
+       for(Edge edge: getEdges(vertex2)) {
+           if(edge.to == vertex1){
+               return edge;
+           }
+       }
+
+       return null;
+   }
+
+   public void removeEdge(int from, int to, int weight) {
+       for(Edge e : this.getEdges(from)) {
+           if(e.to ==to && e.from == from && e.weight == weight){
+               store.get(from).remove(e);
+           }
+       }
+   }
+
+   public void updateWeight(Edge e, int newWeight){
+       for(Edge edge : this.getAllEdges()) {
+
+           if(e.from == edge.from && e.to == edge.to && e.weight == edge.weight){
+               int from = edge.from;
+               store.get(edge.from).remove(edge);
+               edge.weight = newWeight;
+               store.get(edge.from).add(edge);
+           }
+       }
+   }
+
+
    public Set<Integer> getAllVertex(){
        return store.keySet();
    }
