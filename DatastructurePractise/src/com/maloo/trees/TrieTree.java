@@ -15,11 +15,13 @@ public class TrieTree {
 
 
     public  void insert(TrieNode root, String word) {
+        //its an ASCII value of 'a'
         int offset = 97;
         char[] letters = word.toCharArray();
 
         TrieNode cursor = root;
         for(int i=0;i<letters.length;i++) {
+            // letter[i] - offset will return 0 ..26 for a..z
             if(cursor.links[letters[i]-offset] == null){
                 cursor.links[letters[i]-offset]  = new TrieNode(letters[i],new TrieNode[26], false);
             }
