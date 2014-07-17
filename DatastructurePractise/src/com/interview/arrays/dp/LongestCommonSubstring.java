@@ -1,4 +1,4 @@
-package com.interview.arrays;
+package com.interview.arrays.dp;
 
 import com.maloo.trees.TrieTree;
 
