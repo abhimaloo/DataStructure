@@ -1,7 +1,9 @@
 package com.maloo.trees;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Very useful datastructure to save Strings and later search them by prefixes
@@ -11,8 +13,11 @@ import java.util.List;
 public class TrieTree {
 
     //root node contains NULL as character and 26 unintialized objects for every letter
-    private TrieNode root  = new TrieNode('\0',new TrieNode[26], false);
+    public TrieNode root  = null;
 
+    public TrieTree(){
+        this.root =  new TrieNode('\0',new TrieNode[26], false);;
+    }
 
     public  void insert(TrieNode root, String word) {
         //its an ASCII value of 'a'
@@ -180,6 +185,8 @@ public class TrieTree {
         char letter;
         TrieNode[] links;
         boolean fullWord;
+        Map<String,String> bag = new HashMap();
+
 
         public TrieNode(char letter, TrieNode[] links, boolean fullWord) {
             this.letter = letter;
