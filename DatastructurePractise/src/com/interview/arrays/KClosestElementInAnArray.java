@@ -61,29 +61,40 @@ public class KClosestElementInAnArray {
      * @return
      */
     private static int findCrossover(int[] input, int k, int start, int end) {
-        if (start>end){
-            return -1;
-        } else {
-            int mid = (start + end)/2;
-            //if number to find is between mid and its siblings return this mid point
-            // also if midpoint happen to be the last or first element, return the first/last index as midpoint
-            if(input[mid] ==k || mid ==input.length-1 || mid==0 ||  (input[mid]<k && input[mid+1]>k) || (input[mid]>k && input[mid-1]<k) ){
-                return mid;
-            }
-
-            // if x is lesser then left sibling, recurse on left array
-            if(input[mid]<k && input[mid+1]<k){
-                return findCrossover(input,k,mid+1, end);
-            } else {
-                // else recurse on right
-                return findCrossover(input,k,start, mid -1);
-            }
-
+        //base cases
+        if(input[start] > k){
+            return start;
         }
+
+        //base cases
+        if(input[end] < k){
+            return end;
+        }
+
+        int mid = (start + end)/2;
+        //if number to find is between mid and its siblings return this mid point
+
+        if(input[mid] ==k || (input[mid]<k && input[mid+1]>k) || (input[mid]>k && input[mid-1]<k) ){
+            return mid;
+        }
+
+        // if x is lesser then left sibling, recurse on left array
+        if(input[mid]<k && input[mid+1]<k){
+            return findCrossover(input,k,mid+1, end);
+        } else {
+            // else recurse on right
+            return findCrossover(input,k,start, mid -1);
+        }
+
+
     }
 
 
     public static void main(String[] args) {
-        findKClosest(input,4,34);
+        int[] result = findKClosest(input,4,100);
+        for (int i = 0; i < result.length; i++) {
+            System.out.println(result[i]);
+
+        }
     }
 }
