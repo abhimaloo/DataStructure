@@ -47,7 +47,7 @@ public class LongestBitonicSubsequence {
         }
 
         int maxBitonic = 0;
-        //find maximum length of lds[i]+lds[j] -1
+        //find maximum of lds[i]+lds[j] -1
         for( int i=0; i< input.length; i++) {
             if(maxBitonic < lis[i]+lds[i] -1){
                 maxBitonic = lis[i]+lds[i] -1;
