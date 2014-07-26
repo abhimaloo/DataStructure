@@ -1,4 +1,4 @@
-package com.maloo.map;
+package com.maloo.collections.map;
 
 
 /** Implementation of a hashmap
