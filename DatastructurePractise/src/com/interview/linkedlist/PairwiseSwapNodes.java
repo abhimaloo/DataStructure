@@ -8,23 +8,41 @@ package com.interview.linkedlist;
  */
 public class PairwiseSwapNodes extends  MyLinkedList{
 
+    /** trick is to keep two pointers front and back
+     * keep swapping them and maintain a pointer called swapped which points to the last element got reversed
+     * increment the both the pointers again
+     *
+     */
     public void pairwiseSwap(){
+        //handle edge case
+        if(head ==null){
+            return;
+        }
         Node back = head;
         Node front = head.next;
-        boolean headSet = false;
 
-        while(front!=null) {
+        Node swapped = null;
+
+
+        while(front!=null && back!=null) {
+            //this is swapping logic
             Node temp = front.next;
             front.next = back;
             back.next = temp;
-            if(!headSet){
+            //this is to set head
+            if(swapped == null){
                 head = front;
-                headSet = true;
+            } else {
+                //this with attach the result with old result
+                swapped.next = front;
             }
-            if(temp!=null && temp.next!=null){
+            swapped = front.next;
+            //incerement both the pointers
+            back = temp;
+            if(temp!=null){
+                //increment front if there is a possibility
                 front = temp.next;
             }
-            back = back.next;
         }
     }
 
@@ -35,9 +53,10 @@ public class PairwiseSwapNodes extends  MyLinkedList{
         list.insert(3);
         list.insert(4);
         list.insert(5);
-        list.insert(6);
+        //list.insert(6);
 
         list.pairwiseSwap();
+        list.print();
 
     }
 }
