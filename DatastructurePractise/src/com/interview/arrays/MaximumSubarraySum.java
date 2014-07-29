@@ -12,35 +12,33 @@ package com.interview.arrays;
  * Created by abhishekm787 on 7/16/14.
  */
 public class MaximumSubarraySum {
-    public static int[] input = {-2, -5, 6, -2, -3, 1, 5, -6};
+    public static int[] input = {-2, -5,4,10,-15,1, 6, -2, -3, 1, 5, -6};
 
     /**
      * Its through Kadane's algorithm using Dynamic programming..
      * try iterating the array from left to right
-     * capture any non negative element and start keeping cumulative sum
-     * also keep a maz so far to have the maximum value of the maxEnd
+     * Keep cumulative sum of all the array elements
+     * if cumulative sum goes negative..reset it to 0
+     * in every step adjust the maxSumSoFar if required
+     * finally return maxSumSoFar.
+     *
      * @param input
      * @return
      */
     public static int findMaximumSum(int[] input){
-         int maxEnd = -1;
-         int maxSoFar = Integer.MIN_VALUE;
+         int maxSumSoFar = 0;
+         int maxEndCumulativeSum = 0;
+        for (int i = 0; i < input.length; i++) {
+            maxEndCumulativeSum += input[i];
+            if(maxEndCumulativeSum < 0){
+                maxEndCumulativeSum = 0;
+            }
 
-        for(int i=0; i<input.length; i++){
-           if(maxEnd<0){
-               maxEnd = input[i];
-           } else{
-               maxEnd += input[i];
-           }
-
-           if(maxSoFar <= maxEnd){
-               maxSoFar = maxEnd;
-           }
-
+            if(maxSumSoFar < maxEndCumulativeSum){
+                maxSumSoFar = maxEndCumulativeSum;
+            }
         }
-
-        return maxSoFar;
-
+        return maxSumSoFar;
 
     }
 
