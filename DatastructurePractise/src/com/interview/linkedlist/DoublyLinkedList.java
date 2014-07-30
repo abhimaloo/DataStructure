@@ -15,6 +15,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         if(head ==null){
             head = newNode;
             tail = newNode;
+            size++;
             return newNode;
         }
 
@@ -32,6 +33,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         if(head ==null){
             head = newNode;
             tail = newNode;
+            size++;
             return newNode;
         }
 
@@ -65,6 +67,27 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         tail = tail.previous;
         size --;
         return tobeRemoved;
+    }
+
+    public DoublyNode<T> moveToFront(DoublyNode<T> node) {
+      if(node == head){
+          return head;
+      }
+
+      if(node.next!=null) {
+          //if node is a middle node
+          node.previous.next = node.next;
+          node.next.previous = node.previous;
+      } else{
+         //if the node is tail node
+          node.previous.next = null;
+          tail = node.previous;
+      }
+
+      node.previous = null;
+      node.next = head;
+      head = node;
+      return head;
     }
 
     public DoublyNode<T> remove(T data) {
