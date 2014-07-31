@@ -1,4 +1,4 @@
-package com.interview.string;
+package com.interview.string.dp;
 
 /**
  * Given two strings of size m, n and set of operations replace (R), insert (I) and delete (D) all at equal cost.
