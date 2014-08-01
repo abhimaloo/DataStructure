@@ -19,6 +19,7 @@ public class KMPPatternSearch {
     public static String pattern = "BABCA";
 
     /**
+     * ALgo : https://www.youtube.com/watch?v=iZ93Unvxwtw
      * trick is to precompute the DFA (Deterministic Finite Automata) according to KMP algo
      * now go through each character of the data and check for the sliding window of pattern.
      * No need to rebound this time since DFA has the states for unmatched occurings as well.
@@ -61,6 +62,9 @@ public class KMPPatternSearch {
 
     }
 
+    /**
+     ALgo : https://www.youtube.com/watch?v=iZ93Unvxwtw
+     */
     private static int[][] buildDFA(String pattern,  HashSet<Character> dedup){
 
         int[][] dfa = new int[26][pattern.length()];
