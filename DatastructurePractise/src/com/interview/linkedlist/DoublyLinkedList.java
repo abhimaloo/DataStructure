@@ -5,8 +5,8 @@ package com.interview.linkedlist;
  * Created by abhishekm787 on 7/29/14.
  */
 public class DoublyLinkedList<T extends Comparable<T>> {
-    protected DoublyNode<T> head;
-    protected DoublyNode<T> tail;
+    public DoublyNode<T> head;
+    public DoublyNode<T> tail;
     protected int size = 0;
 
     public DoublyNode<T> insert(T data) {
@@ -111,6 +111,20 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         }
         size --;
         return toBeRemoved;
+    }
+
+    public void remove(DoublyNode<T> node) {
+        if(node == head) {
+            head = head.next;
+            head.previous = null;
+        } else if(node == tail) {
+            tail = tail.previous;
+            tail.next = null;
+        } else {
+            node.previous.next = node.next;
+            node.next.previous = node.previous;
+        }
+
     }
 
     public static void main(String[] args) {
