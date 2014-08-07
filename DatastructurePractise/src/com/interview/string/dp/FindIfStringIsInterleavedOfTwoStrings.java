@@ -6,6 +6,8 @@ package com.interview.string.dp;
  * in individual strings is preserved.
  *
  * Ex - A = "XXY"  B = ""XXZ"; C = "XXXXZY";
+ *
+ * http://www.geeksforgeeks.org/check-whether-a-given-string-is-an-interleaving-of-two-other-given-strings-set-2/
  * Created by abhimaloo on 8/5/14.
  */
 public class FindIfStringIsInterleavedOfTwoStrings {
