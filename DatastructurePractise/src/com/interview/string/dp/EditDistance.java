@@ -17,11 +17,11 @@ public class EditDistance {
         distance[0][0] = 0;
         // Match any element of String 1 to empty string
         for(int i=1; i< s1.length()+1; i++) {
-            distance[i][0] = i;
+            distance[i][0] = i; //very important ..value is i
         }
         //Match any element of String 2 with empty string
         for(int i=1; i< s2.length()+1; i++) {
-            distance[0][i] = i;
+            distance[0][i] = i; //very important .. value is i
         }
 
         for(int i=1;i<s1.length()+1; i++) {
