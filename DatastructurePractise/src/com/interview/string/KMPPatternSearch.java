@@ -39,6 +39,7 @@ public class KMPPatternSearch {
                 dedup.add(pattern.charAt(i));
             }
         }
+
         int[][] dfa = buildDFA(pattern, dedup);
         int i=0;
         //this loop is to make sure we keep finding more than one match
