@@ -1,11 +1,14 @@
 package com.interview.trees;
 
+import com.interview.trees.impl.BST;
+import com.interview.trees.impl.BSTNode;
+
 import java.util.LinkedList;
 
 /**
  * Created by abhimaloo on 8/8/14.
  */
-public class LevelOrderTraversal<T extends Comparable<T>> extends BST<T>{
+public class LevelOrderTraversal<T extends Comparable<T>> extends BST<T> {
 
     public void levelOrder(BSTNode<T> root) {
         LinkedList<BSTNode<T>> queue = new LinkedList<>();

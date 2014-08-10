@@ -1,5 +1,8 @@
 package com.interview.trees;
 
+import com.interview.trees.impl.BST;
+import com.interview.trees.impl.BSTNode;
+
 /**
  * A binary search tree (BST) is a node based binary tree data structure which has the following properties.
  • The left subtree of a node contains only nodes with keys less than the node’s key.

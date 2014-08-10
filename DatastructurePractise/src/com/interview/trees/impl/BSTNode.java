@@ -1,4 +1,4 @@
-package com.interview.trees;
+package com.interview.trees.impl;
 
 /**
  * Created by abhimaloo on 8/8/14.

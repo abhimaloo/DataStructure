@@ -1,5 +1,8 @@
 package com.interview.trees;
 
+import com.interview.trees.impl.BST;
+import com.interview.trees.impl.BSTNode;
+
 /** This is only for binary tree
  * Created by abhimaloo on 8/8/14.
  */

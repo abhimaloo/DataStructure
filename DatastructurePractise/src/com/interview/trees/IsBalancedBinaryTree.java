@@ -1,10 +1,13 @@
 package com.interview.trees;
 
+import com.interview.trees.impl.BST;
+import com.interview.trees.impl.BSTNode;
+
 /**
  * Check whether a BST or Binary tree is Balanced or not
  * Created by abhimaloo on 8/8/14.
  */
-public class IsBalancedBinaryTree<T extends Comparable<T>> extends BST<T>  {
+public class IsBalancedBinaryTree<T extends Comparable<T>> extends BST<T> {
 
     public int minHeight(BSTNode<T> root) {
         if(root == null) {

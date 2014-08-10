@@ -1,10 +1,13 @@
 package com.interview.trees;
 
+import com.interview.trees.impl.BST;
+import com.interview.trees.impl.BSTNode;
+
 /** Inorder successor and Predecessor of a node of BST
  *
  * Created by abhimaloo on 8/9/14.
  */
-public class InorderSuccessor<T extends Comparable<T>> extends BST<T>  {
+public class InorderSuccessor<T extends Comparable<T>> extends BST<T> {
 
     /**
      * trick is to find the ndoe while maintaining an account of the node whenever you go to left subtree ..

@@ -1,6 +1,9 @@
 package com.interview.trees;
 
 
+import com.interview.trees.impl.BST;
+import com.interview.trees.impl.BSTNode;
+
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;

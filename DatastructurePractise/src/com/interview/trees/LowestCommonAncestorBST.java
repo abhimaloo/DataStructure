@@ -1,5 +1,8 @@
 package com.interview.trees;
 
+import com.interview.trees.impl.BST;
+import com.interview.trees.impl.BSTNode;
+
 /** LCA in BST  - Very cool algorithm
  * http://www.fusu.us/2013/06/p3-lowest-common-ancestor-in-binary.html
  * Created by abhimaloo on 8/8/14.

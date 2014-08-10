@@ -1,5 +1,8 @@
 package com.interview.trees;
 
+import com.interview.trees.impl.BST;
+import com.interview.trees.impl.BSTNode;
+
 /**
  * Given a BST, transform it into greater sum tree where each node contains sum of all nodes greater than that node.
  * Created by abhimaloo on 8/9/14.

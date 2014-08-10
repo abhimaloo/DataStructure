@@ -1,4 +1,4 @@
-package com.interview.trees;
+package com.interview.trees.impl;
 
 /**
  * Implementation of a generic BST .. implemented method insert, find, findMin, remove, preOrder, postOrder, inOrder
