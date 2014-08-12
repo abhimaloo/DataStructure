@@ -24,11 +24,12 @@ public class DistanceBetweenTwoNodes<T extends Comparable<T>> extends BST<T> {
      */
     public boolean printDistance(BSTNode<T> root, BSTNode<T> node1, BSTNode<T> node2, LinkedList<BSTNode<T>> queue) {
         if(root != null) {
+            //if either of the nodes match with root
             if(root == node1 || root == node2) {
                 // do the counting down logic
                 BSTNode<T> target = null;
                 BSTNode<T> source = null;
-
+                // decide which node is yet to be found
                 if(root == node1) {
                    target = node2;
                    source = node1;
@@ -37,16 +38,21 @@ public class DistanceBetweenTwoNodes<T extends Comparable<T>> extends BST<T> {
                     source = node2;
                 }
 
-                if(!findOtherAndPrint(root,target,source,0)) {
+                // try finding the other node down in the subtrees of found node ..
+                if(!findOtherAndPrint(root,target,0)) {
+                    // if not found under the subtree of found node .. go to ancesstors
                     while(!queue.isEmpty()) {
                         BSTNode<T> node = queue.remove();
+                        // find the second node in the ancestors while restricting route going through found Node
                         if (findOtherAndPrint(node,target, source,queue.size()+1)) {
                             return true;
                         }
                     }
                 }
+                return true;
             }
 
+            // add the root to the queue
             queue.add(root);
 
             boolean found = printDistance(root.left, node1, node2,queue);
@@ -60,6 +66,9 @@ public class DistanceBetweenTwoNodes<T extends Comparable<T>> extends BST<T> {
 
     private boolean findOtherAndPrint(BSTNode<T> root, BSTNode<T> target, BSTNode<T> source, int distance) {
         if(root != null) {
+            if(root == source){
+                return false;
+            }
 
             if(root != source && root == target) {
                 System.out.println(distance);
@@ -68,6 +77,22 @@ public class DistanceBetweenTwoNodes<T extends Comparable<T>> extends BST<T> {
 
             if(!findOtherAndPrint(root.left,target,source, distance +1)) {
                 return findOtherAndPrint(root.right, target, source, distance +1);
+            }
+            return true;
+        }
+        return false;
+    }
+
+    private boolean findOtherAndPrint(BSTNode<T> root, BSTNode<T> target, int distance) {
+        if(root != null) {
+
+            if(root == target) {
+                System.out.println(distance);
+                return true;
+            }
+
+            if(!findOtherAndPrint(root.left,target, distance +1)) {
+                return findOtherAndPrint(root.right, target, distance +1);
             }
             return true;
         }
@@ -88,6 +113,6 @@ public class DistanceBetweenTwoNodes<T extends Comparable<T>> extends BST<T> {
         tree.insert(tree.root,7);
         tree.insert(tree.root,3);
 
-        tree.printDistance(tree.root, tree.find(tree.root,1),tree.find(tree.root,4), new LinkedList<BSTNode<Integer>>());
+        tree.printDistance(tree.root, tree.find(tree.root,14),tree.find(tree.root,4), new LinkedList<BSTNode<Integer>>());
     }
 }
