@@ -10,7 +10,7 @@ import com.interview.trees.impl.BSTNode;
 public class InorderSuccessor<T extends Comparable<T>> extends BST<T> {
 
     /**
-     * trick is to find the ndoe while maintaining an account of the node whenever you go to left subtree ..
+     * trick is to find the node while maintaining an account of the node whenever you go to left subtree ..
      * finally when you reach the node .. there are only two cases -
      * a) Node has a right subTree - return the right node ..(since right children is inorder successor)
      * b) Node does not have a right subtree - return the node from where you took left.
@@ -24,8 +24,12 @@ public class InorderSuccessor<T extends Comparable<T>> extends BST<T> {
         if(root.data.compareTo(target.data) == 0) {
             // if the node has right subtree
             if(root.right != null) {
-                //return the right child
-                return root.right;
+                // find min in right subtree
+                root = root.right;
+                while(root.left != null){
+                    root = root.left;
+                }
+                return root;
             }
         } else if(root.data.compareTo(target.data) > 0) {
             // while going left record the current root from where you took left turn
@@ -53,8 +57,12 @@ public class InorderSuccessor<T extends Comparable<T>> extends BST<T> {
         if(root.data.compareTo(target.data) == 0) {
             // if the node has left subtree
             if(root.left != null) {
-                //return the left child
-                return root.left;
+                //find max in left subtree
+                root  = root.left;
+                while(root.right != null) {
+                    root = root.right;
+                }
+                return root;
             }
         } else if(root.data.compareTo(target.data) > 0) {
             // while going left you dont care to record right taker
@@ -82,8 +90,8 @@ public class InorderSuccessor<T extends Comparable<T>> extends BST<T> {
         tree.insert(tree.root,5);
         tree.insert(tree.root,7);
 
-        //System.out.println(tree.inOrderSuccessor(tree.root, tree.find(tree.root, 7), null).data);
-        System.out.println(tree.inOrderPredecessor(tree.root, tree.find(tree.root, 14), null).data);
+        //System.out.println(tree.inOrderSuccessor(tree.root, tree.find(tree.root, 8), null).data);
+        System.out.println(tree.inOrderPredecessor(tree.root, tree.find(tree.root, 8), null).data);
 
     }
 
