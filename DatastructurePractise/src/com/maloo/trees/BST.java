@@ -358,7 +358,7 @@ public class BST<T extends Comparable<T>> {
     }
 
     /**
-     *
+     *  post order traversal .. while processing root swap the left and right element
      * @param root
      * @return
      */
