@@ -12,32 +12,41 @@ public class PrintBoundaryOfBST<T extends Comparable<T>> extends BST<T> {
 
     /**
      * Trick is to follow these steps -
-     * a) print left most boundary wihtout the leaf node (like find min operation)
+     * a) print left most boundary without the leaf node (like modified find min operation, instead we have to go right as well)
      * b) print PreOrder(DFS) traversal and print all the leaf nodes only
-     * c) print right subtreee while popping out ( find Max , but in reverse order) also not print the root again
+     * c) print right subtreee while popping out (pass root's right child to the method so that root is not printed again)
+     *
      * @param root
      */
     public void printBoundary(BSTNode<T> root) {
+        // print left most elements also right childs with no left siblings ..
         printLeftMostBoundary(root);
-
+        // do preOrder and print only the leaves
         printLeavesLeftToRight(root);
-
-        printRightMostBoundary(root, root);
+        // from rott's right child (to avoid duplicate printing, print right most childs ..
+        // also take care of left childs in right subtree which does not have right siblings ..
+        printRightMostBoundary(root.right);
     }
 
 
-    private void printRightMostBoundary(BSTNode<T> root, BSTNode<T> notToPrint) {
+    private void printRightMostBoundary(BSTNode<T> root) {
         if(root!= null) {
 
             // till we have a not null right child .. keep going to right subtree
             if(root.right != null){
-                printRightMostBoundary(root.right, notToPrint);
-            }
-            // while popping out  -
-            // if its not a leaf node and not equal to Root .. print it
-            if(!(root.left ==null && root.right == null) && notToPrint!=root) {
+                printRightMostBoundary(root.right);
+                //print it while popping out
                 System.out.println(root.data);
+            } else {
+                // if you are on the onde which has left subtree but not right subtree then follow to the left
+                if(root.left !=  null) {
+                    // keep on passing the left child
+                    printRightMostBoundary(root.left);
+                    // print it while popping out
+                    System.out.println(root.data);
+                }
             }
+
         }
 
     }
@@ -61,13 +70,17 @@ public class PrintBoundaryOfBST<T extends Comparable<T>> extends BST<T> {
     private void printLeftMostBoundary(BSTNode<T> root) {
 
         if(root!= null) {
-            // if its not a leaf node print it
-            if(!(root.left ==null && root.right == null)) {
-                System.out.println(root.data);
-            }
+
              /// keep going to the left subtree. till it reaches leaf node
             if(root.left != null){
+                System.out.println(root.data);
                 printLeftMostBoundary(root.left);
+
+            } else if(root.right != null) {
+                // if you reach a node which has no more left child but right child ..
+                // proceed to the right child and again look for far left
+                System.out.println(root.data);
+                printLeftMostBoundary(root.right);
             }
         }
 
