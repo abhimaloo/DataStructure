@@ -62,9 +62,9 @@ public class SegmentTree {
             return new SegmentTreeNode(input[start],null, null, start, end);
         }
 
-        int mid = (start + (end -start))/2;
-        SegmentTreeNode leftSegment = buildSegmentTreeForSum(input, start, mid);
-        SegmentTreeNode rightSegment = buildSegmentTreeForSum(input, mid+1, end);
+        int mid = (start + (end))/2;
+        SegmentTreeNode leftSegment = buildSegmentTreeForMinValue(input, start, mid);
+        SegmentTreeNode rightSegment = buildSegmentTreeForMinValue(input, mid+1, end);
 
         return new SegmentTreeNode(Math.min(leftSegment.data, rightSegment.data), leftSegment, rightSegment, leftSegment.fromIndex, rightSegment.toIndex);
     }
@@ -87,9 +87,13 @@ public class SegmentTree {
 
     public static void main(String[] args) {
         int[] input = {1,3,5,7,9,11};
-        SegmentTree tree = new SegmentTree();
-        tree.root = tree.buildSegmentTreeForSum(input, 0, input.length - 1);
-        System.out.println(tree.getSum(tree.root, 0, 4));
+        SegmentTree sumTree = new SegmentTree();
+        sumTree.root = sumTree.buildSegmentTreeForSum(input, 0, input.length - 1);
+        System.out.println(sumTree.getSum(sumTree.root, 0, 4));
+
+        SegmentTree rangeMinimumTree = new SegmentTree();
+        rangeMinimumTree.root = rangeMinimumTree.buildSegmentTreeForMinValue(input, 0, input.length -1);
+        System.out.println(rangeMinimumTree.findMinForRange(rangeMinimumTree.root, 0, 5));
 
     }
 
