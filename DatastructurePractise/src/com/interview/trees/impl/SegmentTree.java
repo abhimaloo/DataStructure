@@ -13,7 +13,7 @@ public class SegmentTree {
      * keep combining left node and right node to create parent node.
      * @return
      */
-    public SegmentTreeNode buildSegmentTree(int[] input, int start, int end) {
+    public SegmentTreeNode buildSegmentTreeForSum(int[] input, int start, int end) {
 
         if(start > end) {
             return null;
@@ -25,8 +25,8 @@ public class SegmentTree {
             //find mid point
             int mid = (start + end)/2;
             // recusrsively build left segment and right segment
-            SegmentTreeNode leftSegment = buildSegmentTree(input, start, mid);
-            SegmentTreeNode rightSegment = buildSegmentTree(input, mid+1, end);
+            SegmentTreeNode leftSegment = buildSegmentTreeForSum(input, start, mid);
+            SegmentTreeNode rightSegment = buildSegmentTreeForSum(input, mid + 1, end);
             // merge step  - create a new node which has left Segment and right segment as children and their sum as parent
             // finally build root node
             return new SegmentTreeNode(leftSegment.data + rightSegment.data, leftSegment,rightSegment,leftSegment.fromIndex,rightSegment.toIndex);
@@ -52,11 +52,44 @@ public class SegmentTree {
     }
 
 
+    // same as above this time we need to put minimum in the parent node
+    public SegmentTreeNode buildSegmentTreeForMinValue( int[] input, int start, int end) {
+        if(start > end) {
+            return null;
+        }
+
+        if(start == end){
+            return new SegmentTreeNode(input[start],null, null, start, end);
+        }
+
+        int mid = (start + (end -start))/2;
+        SegmentTreeNode leftSegment = buildSegmentTreeForSum(input, start, mid);
+        SegmentTreeNode rightSegment = buildSegmentTreeForSum(input, mid+1, end);
+
+        return new SegmentTreeNode(Math.min(leftSegment.data, rightSegment.data), leftSegment, rightSegment, leftSegment.fromIndex, rightSegment.toIndex);
+    }
+
+    // same as above only catch is to find min among left and right subchild
+    public int findMinForRange(SegmentTreeNode root, int start, int end) {
+        if(root.fromIndex >= start && root.toIndex <=end ){
+            return root.data;
+        }
+        // return +Infinite if root falls off exteremely .. so that it cannot impact the minimum detection
+        if(root.toIndex < start || root.fromIndex > end) {
+            return Integer.MAX_VALUE;
+        }
+
+        return Math.min(findMinForRange(root.left, start, end), findMinForRange(root.right, start, end));
+
+    }
+
+
+
     public static void main(String[] args) {
         int[] input = {1,3,5,7,9,11};
         SegmentTree tree = new SegmentTree();
-        tree.root = tree.buildSegmentTree(input,0, input.length-1);
-        System.out.println(tree.getSum(tree.root, 0,4));
+        tree.root = tree.buildSegmentTreeForSum(input, 0, input.length - 1);
+        System.out.println(tree.getSum(tree.root, 0, 4));
 
     }
 
