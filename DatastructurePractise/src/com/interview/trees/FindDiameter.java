@@ -4,6 +4,9 @@ import com.interview.trees.impl.BST;
 import com.interview.trees.impl.BSTNode;
 
 /**
+ * The diameter of a tree (sometimes called the width) is the number of nodes on the longest path between two leaves in the tree.
+ *
+ * http://www.geeksforgeeks.org/diameter-of-a-binary-tree/
  * Created by abhimaloo on 8/9/14.
  */
 public class FindDiameter {
