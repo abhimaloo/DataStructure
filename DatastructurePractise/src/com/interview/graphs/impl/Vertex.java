@@ -1,4 +1,4 @@
-package com.interview.graphs;
+package com.interview.graphs.impl;
 
 import java.util.Map;
 

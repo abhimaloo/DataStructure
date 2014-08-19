@@ -1,7 +1,7 @@
 package com.interview.string;
 
-import com.interview.graphs.TopologicalSort;
-import com.interview.graphs.Vertex;
+import com.interview.graphs.impl.TopologicalSort;
+import com.interview.graphs.impl.Vertex;
 
 /**
  * Given a sorted dictionary (array of words) of an alien language, find order of characters in the language.

@@ -1,4 +1,4 @@
-package com.interview.graphs;
+package com.interview.graphs.impl;
 
 import java.util.*;
 
@@ -83,8 +83,11 @@ public class MyGraph<V extends Comparable<V>,E> {
         stack.push(new Vertex<>(startVertex,null));
         while(!stack.isEmpty()) {
             Vertex<V> vertex = stack.pop();
-            System.out.println(vertex);
-            visited.add(vertex.data);
+            if(!visited.contains(vertex.data)) {
+                System.out.println(vertex);
+                visited.add(vertex.data);
+            }
+
             for(Edge<V,E> edge : getOutgoingEdges(vertex.data)) {
                 if(!visited.contains(edge.to.data)){
                     stack.push(edge.to);

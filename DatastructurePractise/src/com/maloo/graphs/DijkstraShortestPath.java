@@ -43,7 +43,7 @@ public class DijkstraShortestPath {
 
                 for(Edge edge: g.getEdges(vertex)) {
                     // add the edge which is not targetting to a edge present in the mould
-                    if(!mould.contains(edge.to)){
+                    if(!mould.contains(edge.to) && !heap.contains(edge)){
                         heap.add(edge);
                     }
                 }

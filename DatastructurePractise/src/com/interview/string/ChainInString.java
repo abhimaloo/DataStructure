@@ -1,7 +1,7 @@
 package com.interview.string;
 
-import com.interview.graphs.KosarajuSCC;
-import com.interview.graphs.Vertex;
+import com.interview.graphs.impl.KosarajuSCC;
+import com.interview.graphs.impl.Vertex;
 
 /**
  * Given an array of strings, find if the given strings can be chained to form a circle.
