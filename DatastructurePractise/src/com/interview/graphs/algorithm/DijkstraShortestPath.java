@@ -67,8 +67,8 @@ public class DijkstraShortestPath extends  SimpleGraph{
             SimpleEdge shortestEdge = null;
             // while heap has some element
             while(!heap.isEmpty()) {
-                // try looking at the peek of the heap if it contains an edge which goes to a vertex not present in mould
-                if(!mould.contains(heap.peek().to)) {
+                // try looking at the peak of the heap if it contains an edge which goes to a vertex not present in mould
+                if(!mould.contains(heap.poll().to)) {
                     // remove the min edge
                     shortestEdge = heap.remove();
                     // break the loop
