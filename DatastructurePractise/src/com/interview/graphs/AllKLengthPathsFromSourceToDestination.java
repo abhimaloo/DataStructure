@@ -9,6 +9,9 @@ import java.util.Map;
 import java.util.Set;
 
 /**
+ * Given a directed graph and two vertices ‘u’ and ‘v’ in it, count all possible walks from ‘u’ to ‘v’ with exactly k edges on the walk
+ *
+ * http://www.geeksforgeeks.org/count-possible-paths-source-destination-exactly-k-edges/
  * Created by abhimaloo on 8/19/14.
  */
 public class AllKLengthPathsFromSourceToDestination extends SimpleGraph{
@@ -67,11 +70,16 @@ public class AllKLengthPathsFromSourceToDestination extends SimpleGraph{
                         countOfWalks.put(new Pair(i,j,l), 1);
                     }
 
+                    // for multiple length paths
                     if(l > 1) {
+                        // find the adjacent vertices of i
                         for(Integer m : vertices) {
+                            // if there is a direct edge from  i to m
                             if(hasEdge(i,m)) {
                                 int count = countOfWalks.get(new Pair(i,j,l));
+                                //using DP add the count of walks starting from vertex m to desitnation j using l-1 budget
                                 count += countOfWalks.get(new Pair(m,j,l-1));
+                                // all such m's will contribute to numbe rof walks from i to j
                                 countOfWalks.put(new Pair(i,j,l), count);
                             }
                         }
