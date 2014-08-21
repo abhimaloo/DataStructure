@@ -11,20 +11,61 @@ public class SimpleGraph {
 
     public Map<Integer, List<SimpleEdge>> graph = new HashMap<>();
 
-    public void insertEdge(Integer from, Integer to, Integer weight) {
-       if(!graph.containsKey(from)) {
-           graph.put(from, new ArrayList<SimpleEdge>());
-           if(!graph.containsKey(to)) {
-               graph.put(to, new ArrayList<SimpleEdge>());
-           }
-       }
+    public void insertEdge(Integer from, Integer to, Integer weight, boolean isDirected) {
+        if(!graph.containsKey(from)) {
+            graph.put(from, new ArrayList<SimpleEdge>());
+        }
+        if(!graph.containsKey(to)) {
+            graph.put(to, new ArrayList<SimpleEdge>());
+        }
 
-       graph.get(from).add(new SimpleEdge(from, to, weight));
+
+        graph.get(from).add(new SimpleEdge(from, to, weight));
+        if(!isDirected) {
+            graph.get(to).add(new SimpleEdge(to, from, weight));
+        }
+    }
+
+    public void insertEdge(Integer from, Integer to, Integer weight) {
+       insertEdge(from, to, weight, true);
     }
 
     public List<SimpleEdge> getOutgoingEdges(Integer vertex) {
-       return  graph.get(vertex);
+       return  getOutgoingEdges(vertex, true);
     }
+
+    public Set<Integer> getAdjacentNeighbours(Integer vertex, boolean isDirected) {
+       Set<Integer> neighbours = new HashSet<>();
+       for(SimpleEdge e: getOutgoingEdges(vertex, isDirected)) {
+           if(e.to != vertex) {
+               neighbours.add(e.to);
+           } else {
+               if(!isDirected) {
+                   neighbours.add(e.from);
+               }
+           }
+       }
+       return neighbours;
+    }
+
+
+    public List<SimpleEdge> getOutgoingEdges(Integer vertex, boolean isDirected) {
+        List<SimpleEdge> edges = new ArrayList<>();
+        if(!isDirected) {
+            // all edges which go to vertex
+            for( SimpleEdge e : getAllEdges()) {
+                if(e.to == vertex) {
+                    edges.add(e);
+                }
+            }
+        }
+
+        // all the edges which starts from vertex
+        edges.addAll(graph.get(vertex));
+        return edges;
+    }
+
+
 
     public Set<Integer> getAllVertex() {
        return graph.keySet();
