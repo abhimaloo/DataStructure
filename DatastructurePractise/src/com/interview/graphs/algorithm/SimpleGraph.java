@@ -68,7 +68,7 @@ public class SimpleGraph {
 
 
     public Set<Integer> getAllVertex() {
-       return graph.keySet();
+       return new HashSet<>(graph.keySet());
     }
 
     public List<SimpleEdge> getAllEdges() {
