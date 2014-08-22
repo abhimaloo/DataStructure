@@ -97,7 +97,7 @@ public class MazeWithHurdles {
     }
 
     public static void main(String[] args) {
-        findWay(maze, new Pair(0,0), new Pair(5,5));
+        findWay(MazeWithHurdles.maze, new Pair(0,0), new Pair(5,5));
     }
 
     public static void printBoard(int [][] board) {
