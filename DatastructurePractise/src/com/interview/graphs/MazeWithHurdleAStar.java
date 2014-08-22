@@ -120,7 +120,7 @@ public class MazeWithHurdleAStar {
 
         while(!heap.isEmpty()) {
             Pw pairWeight = heap.remove();
-
+             // early exit condition
             if(pairWeight.p.equals(end)){
                 break;
             }
@@ -129,20 +129,23 @@ public class MazeWithHurdleAStar {
                 int newCost = cost.get(pairWeight.p) + neighbour.weight;
                 if(!parent.containsKey(neighbour) && (!cost.containsKey(neighbour) || newCost < cost.get(neighbour))) {
                    cost.put(neighbour, newCost);
+                    // adding heuristic - which is Math.abs(end.x - neighbour.x) + Math.abs(end.y - neighbour.y)  distance from end Goal
                    int weight = newCost + Math.abs(end.x - neighbour.x) + Math.abs(end.y - neighbour.y);
                    heap.add(new Pw(neighbour,weight));
-                    parent.put(neighbour, pairWeight.p);
+                   parent.put(neighbour, pairWeight.p);
                 }
             }
 
         }
 
+        //iterate on rev pointer and keep adding them to the maze
         if(parent.containsKey(end)) {
             maze[end.x][end.y] = 2;
             while(true) {
                 if(parent.get(end) == null) {
                     break;
                 }
+                // mark the maze with the path
                 maze[parent.get(end).x][parent.get(end).y] = 2;
                 end = parent.get(end);
             }
