@@ -9,7 +9,7 @@ package com.interview.backtracking;
  */
 public class PrintAllPermutationOfAGivenString {
 
-    public static String input = "ABCD";
+    public static String input = "ABC";
 
     /**
      * trick is to use backtracking algorithm
