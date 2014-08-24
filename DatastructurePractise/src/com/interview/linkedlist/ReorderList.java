@@ -23,10 +23,7 @@ public class ReorderList extends  MyLinkedList{
 
         while(fast!=null && fast.next!=null){
             slow = slow.next;
-            fast = fast.next;
-            if(fast!=null) {
-                fast = fast.next;
-            }
+            fast = fast.next.next;
         }
 
         //slow is at n/2 .. reverse the list till end
