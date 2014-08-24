@@ -136,7 +136,7 @@ public class BST<T extends Comparable<T>> {
         tree.insert(tree.root,5);
         tree.insert(tree.root,7);
 
-        tree.remove(tree.root,8);
+        tree.postOrder(tree.root);
 
     }
 

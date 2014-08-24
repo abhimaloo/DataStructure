@@ -130,11 +130,11 @@ public class IterativeTraversal<T extends Comparable<T>> extends BST<T> {
         tree.insert(tree.root,6);
         tree.insert(tree.root,10);
         tree.insert(tree.root,14);
-        tree.insert(tree.root,1);
-        tree.insert(tree.root,5);
-        tree.insert(tree.root,7);
+        //tree.insert(tree.root,1);
+        //tree.insert(tree.root,5);
+        //tree.insert(tree.root,7);
 
-        tree.postOrder(tree.root);
+        tree.preOrder(tree.root);
 
     }
 
