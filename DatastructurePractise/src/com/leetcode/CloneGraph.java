@@ -63,6 +63,13 @@ public class CloneGraph {
         return graph;
     }
 
+    /**
+     * trick is to use DFS and keep track of created elements ..
+     * while doing DFS .. keep creating the copy of nodes and
+     * @param source
+     * @param cloned
+     * @return
+     */
     public Map<Integer, GraphNode> clone(GraphNode source, Map<Integer, GraphNode> cloned) {
        // try DFS form source
         if(source == null) {
