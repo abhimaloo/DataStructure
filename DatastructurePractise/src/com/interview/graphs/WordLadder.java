@@ -50,6 +50,7 @@ public class WordLadder {
         LinkedList<Integer> queue = new LinkedList<>();
         Map<Integer, Boolean> visited = new HashMap<>();
         Map<Integer, Integer> parentMap = new HashMap<>();
+        //this is to print it in right order
         LinkedList<String> stack = new LinkedList<>();
         queue.addLast(startIndex);
         parentMap.put(startIndex, -1);
