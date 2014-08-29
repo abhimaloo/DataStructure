@@ -88,10 +88,8 @@ public class ReverseAlternateLevelNodesInBST<T extends Comparable<T>> extends BS
         tree.insert(tree.root,13);
         tree.insert(tree.root,15);
 
-       // tree.inOrder(tree.root);
-        System.out.println(" ------------");
-        tree.reverseAlternateLevelNodes(tree.root);
-        tree.inOrder(tree.root);
+        System.out.println(Integer.parseInt("123"));
+
     }
 
 
