@@ -49,7 +49,7 @@ public class MergeIntervals {
         });
 
         for(int i=1; i<intervalList.size(); i++){
-            //if start time i is less than end time of i-1 .. then there is a conflict ..
+            //if start time i is less than end time of i-1 .. then licthere is a conft ..
             //merge the two intervals
             if(intervalList.get(i).startTime < intervalList.get(i-1).endTime){
                //merge the intervals i and i-1 to i
