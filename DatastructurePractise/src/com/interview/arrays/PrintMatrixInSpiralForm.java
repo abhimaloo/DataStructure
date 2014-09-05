@@ -23,7 +23,7 @@ public class PrintMatrixInSpiralForm {
         int leftBottom = -1;
         int rightBottom = input.length;
         int i=0; int j=0; int count =0;
-        while(count<input.length* input[0].length){
+        while(count<input.length * input[0].length){
             while(true){
                 if(j<rightTop){
                     System.out.println(" "+input[i][j++]+" ");
