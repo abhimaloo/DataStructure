@@ -9,7 +9,7 @@ import com.interview.trees.impl.BSTNode;
  * https://oj.leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
  * Created by abhimaloo on 8/27/14.
  */
-public class ConstructBinaryTreeFromPreOrderAndInOrder {
+public class ConstructBinaryTReeFromPreOrderAndInOrder {
 
     public static int[] inorder = {1,2,3,4,5,6,7};
     public static int[] preorder = {4,2,1,3,6,5,7};
