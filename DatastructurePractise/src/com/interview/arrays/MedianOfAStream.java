@@ -30,12 +30,12 @@ public class MedianOfAStream {
      * @param number
      * @return
      */
-    public static int findMedian(int number) {
+    public static int findMedian(int number, int lastMedian) {
 
         // if existing size is even
         if((minHeap.size()+maxHeap.size()) %2  == 0) {
             //number belongs to min Heap
-            if(number > (minHeap.peek()!=null ? minHeap.peek() : Integer.MIN_VALUE)){
+            if(number > lastMedian){
                 minHeap.add(number);
             } else {
                 // if number belongs to max heap ..we will need to balance the heaps
@@ -64,9 +64,11 @@ public class MedianOfAStream {
     }
 
     public static void main(String[] args) {
-       int [] stream = {2,3,4,7,1,9,11};
+       int [] stream = {2,8,6,7,3,9,11};
+        int median = 0;
         for (int i = 0; i < stream.length; i++) {
-            System.out.println("Median IS :"+ findMedian(stream[i]));
+           median = findMedian(stream[i], median);
+            System.out.println("Median IS :"+ median);
 
         }
     }
