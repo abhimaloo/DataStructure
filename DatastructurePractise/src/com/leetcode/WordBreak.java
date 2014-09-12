@@ -13,7 +13,7 @@ public class WordBreak {
     public static Set<String> dict = new HashSet<>(Arrays.asList("cat", "cats", "and", "sand", "dog"));
 
     /**
-     * Trick is to use memoization .
+     * Trick is to use memoization.
      * for every index check if a word in the dictionary starts from their and contained in the input string.
      * record the end position of the word in a boolean array.
      * @param s
