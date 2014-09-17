@@ -29,8 +29,29 @@ public class MaximumSubarraySum {
         return maxSumSoFar;
     }
 
+    public static int maxSum(int[] input) {
+        int maxSumSoFar = input[0];
+        int sum = input[0];
+        for(int  i = 1; i< input.length; i++) {
+            if(input[i] + sum < 0) {
+                sum = 0;
+            } else {
+                sum += input[i];
+
+                if(sum > maxSumSoFar) {
+                    maxSumSoFar = sum;
+                }
+            }
+        }
+
+        return maxSumSoFar;
+
+    }
+
+
 
     public static void main(String[] args) {
+        System.out.println(maxSum(input));
         System.out.println(findMaxSumContigous(input));
     }
 
