@@ -35,6 +35,8 @@ public class MyHashMap<K,V> {
     public boolean contains(K key) {
         if(size>0) {
             //trick to avoid negative hash code and hash value more than Integer.MAX_VALUE
+            // 0x7fffffff means 0111 1111 1111 1111 1111 1111 1111 1111 .. doing a logical and with this value will unset the sign bit
+            // even negative thing will become positive
             int index = (key.hashCode() & 0x7fffffff) % max_size;
             Entry target = (Entry)store[index];
             while(target!=null){

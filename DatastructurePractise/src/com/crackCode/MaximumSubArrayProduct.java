@@ -1,4 +1,4 @@
-package com.revision;
+package com.crackCode;
 
 /**
  * The Largest Product Continuous Substring(LPCS) problem

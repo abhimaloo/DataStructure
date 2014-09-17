@@ -1,4 +1,4 @@
-package com.revision;
+package com.crackCode;
 
 import java.util.Random;
 
@@ -23,7 +23,7 @@ public class ShuffleArray {
     public static void main(String[] args) {
         shuffle(input, input.length-1);
         for( int i : input) {
-            System.out.print(" "+ i +" ");
+            System.out.print(" " + i + " ");
         }
 
 
