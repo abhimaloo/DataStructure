@@ -8,7 +8,7 @@ package com.interview.arrays;
  */
 public class FindTwoNumbersWithOddOccurences {
 
-    public static int[] input = {12, 23, 34, 12, 12, 23, 12, 45};
+    public static int[] input = {12, 23, 34, 12, 12, 23, 12, 45, 45, 12};
 
     /**
      * basic trick  -

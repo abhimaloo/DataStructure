@@ -47,8 +47,39 @@ public class FindMinimumAndMaximumInArray {
 
     }
 
+    public static void findminMax(int [] input) {
+        int left = 0;
+        int right = input.length-1;
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+
+        while(left <= right) {
+
+            if(left<right) {
+                if(input[left] < input[right]) {
+                    min = Math.min(input[left], min);
+                    max = Math.max(input[right], max);
+                } else {
+                    min = Math.min(input[right], min);
+                    max = Math.max(input[left], max);
+                }
+                right --;
+                left ++;
+            } else {
+                min = Math.min(input[left], min);
+                max = Math.max(input[left], max);
+            }
+        }
+
+
+        System.out.println("Minimum :" +  min+ "Max :"+ max);
+
+    }
+
+
     public static void main(String[] args) {
         findMiniMax(input);
+        findminMax(input);
     }
 
 }
