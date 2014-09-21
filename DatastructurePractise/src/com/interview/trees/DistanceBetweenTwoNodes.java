@@ -100,49 +100,6 @@ public class DistanceBetweenTwoNodes<T extends Comparable<T>> extends BST<T> {
     }
 
 
-    public static int distance = 0;
-    public static boolean set1 = false;
-    public static boolean set2 = false;
-
-    public BSTNode<T> findDistance(BSTNode<T> root, BSTNode<T> a, BSTNode<T> b) {
-        if(root == null) {
-            return null;
-        }
-
-        if(root == a || root == b){
-            if(set1){
-               set2 = true;
-            } else{
-                set1 = true;
-            }
-
-            return root;
-        }
-
-        BSTNode<T> left = findDistance(root.left, a, b);
-        BSTNode<T> right = findDistance(root.right, a, b);
-
-        if(left != null && right != null) {
-            set1 = false;
-            set2 = false;
-            distance += 2;
-            System.out.println("Distance :"+ distance);
-            return root;
-        }
-
-        if(left != null) {
-            if(set1 && set2 && (left == a || left == b ) ){
-                distance ++;
-            }
-            return left;
-        } else {
-            if(set1 && set2 && (right == a || right == b)){
-                distance ++;
-            }
-            return right;
-        }
-
-    }
 
 
     public static void main(String[] args) {
@@ -158,8 +115,8 @@ public class DistanceBetweenTwoNodes<T extends Comparable<T>> extends BST<T> {
         tree.insert(tree.root,5);
         tree.insert(tree.root,7);
         tree.insert(tree.root,3);
-        tree.findDistance(tree.root, tree.find(tree.root,2),tree.find(tree.root,12));
+       // tree.findDistance(tree.root, tree.find(tree.root,2),tree.find(tree.root,14));
 
-        //tree.printDistance(tree.root, tree.find(tree.root,14),tree.find(tree.root,4), new LinkedList<BSTNode<Integer>>());
+        tree.printDistance(tree.root, tree.find(tree.root,14),tree.find(tree.root,4), new LinkedList<BSTNode<Integer>>());
     }
 }
