@@ -25,7 +25,7 @@ public class DijkstraShortestPath extends  SimpleGraph{
         heap.add(sourceVertex);
         cost.put(sourceVertex, 0);
         parent.put(sourceVertex, null);
-        int count = 1;
+
         while(!heap.isEmpty()) {
             Integer p  = heap.remove();
 
@@ -35,7 +35,6 @@ public class DijkstraShortestPath extends  SimpleGraph{
                    cost.put(e.to, newCost);
                    parent.put(e.to, p);
                    heap.add(e.to);
-                    System.out.println("count : "+ ++count);
                 }
 
             }
