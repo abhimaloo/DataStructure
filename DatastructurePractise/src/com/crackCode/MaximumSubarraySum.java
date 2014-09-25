@@ -4,7 +4,8 @@ package com.crackCode;
  * Created by abhimaloo on 9/14/14.
  */
 public class MaximumSubarraySum {
-    public static int[] input = {-2, -5,4,10,-1,1, 6, -2, -3, 1, 5, -6};
+    //public static int[] input = {-2, -5,4,10,-1,1, 6, -2, -3, 1, 5, -6};
+    public static int[] input = {-2, -5,-4,-10,-1,-1, -6, -2, -3, -1, -5, -6};
 
     /**
      * Trick is to use DP ..
@@ -48,11 +49,42 @@ public class MaximumSubarraySum {
 
     }
 
+    public static int findMaxSumRange(int[] input) {
+        int start = 0;
+        int end = 0;
+        int maxSum = 0;
+        int maxStart = 0;
+        int maxEnd = 0;
+        int sum = 0;
+
+        for( int i = 0; i <input.length; i++) {
+            sum += input[i];
+            if(sum < 0) {
+                sum = 0;
+                start = i+1;
+                end = i+1;
+            } else {
+                end = i;
+                if(sum > maxSum){
+                    maxStart = start;
+                    maxEnd = end;
+                    maxSum = sum;
+                }
+            }
+        }
+
+        System.out.println(maxSum + ":"+maxStart+"-"+maxEnd);
+
+       return maxSum;
+    }
+
+
 
 
     public static void main(String[] args) {
         System.out.println(maxSum(input));
         System.out.println(findMaxSumContigous(input));
+        System.out.println(findMaxSumRange(input));
     }
 
 }
