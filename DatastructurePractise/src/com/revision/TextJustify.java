@@ -1,5 +1,8 @@
 package com.revision;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Given an array of words and a length L, format the text such that each line has exactly L characters and is fully (left and right) justified.
 
@@ -57,11 +60,12 @@ public class TextJustify {
 
        int[] justifyCost = new int[words.length+1];
        int[] justificationPoints = new int[words.length +1];
+       List<String> result = new ArrayList<>();
 
        justifyCost[words.length] = 0;
 
        for(int i = words.length-1; i >= 0; i--) {
-           // assig justify cost to infinite for now
+           // assign justify cost to infinite for now
            justifyCost[i] = Integer.MAX_VALUE;
            for( int j = i+1; j<words.length+1; j++) {
                int length = 0;
@@ -90,6 +94,8 @@ public class TextJustify {
 
 
     }
+
+
 
     public static void main(String[] args) {
 

@@ -19,7 +19,8 @@ import java.util.List;
  */
 public class Candies {
 
-    public static int [] ratings = {6,7,1,2,2,2,5};
+    //public static int [] ratings = {6,7,1,2,2,2,5};
+    public static int [] ratings = {2,5,6,1,8,3};
 
     //very cool trick .. follow the underwritten steps -
     // 1) create a position array with position[i] = i;

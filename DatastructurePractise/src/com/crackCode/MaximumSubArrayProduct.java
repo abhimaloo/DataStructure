@@ -6,13 +6,13 @@ package com.crackCode;
  */
 public class MaximumSubArrayProduct {
 
-    public static double[] input = {-2.5, 4, 0, 3, 0.5, 8, -1};
+    public static int[] input = {2,3,-2,4, 4, -2, 0};
 
-    public static double findMaxProduct(double[] input) {
+    public static int findMaxProduct(int[] input) {
 
-        double[] max = new double[input.length];
-        double[] min = new double[input.length];
-        double maxProduct = min[0] = max[0] = input[0];
+        int[] max = new int[input.length];
+        int[] min = new int[input.length];
+        int maxProduct = min[0] = max[0] = input[0];
 
         for( int i = 1; i< input.length; i++) {
 

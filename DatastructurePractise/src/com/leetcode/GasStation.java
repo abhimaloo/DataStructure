@@ -12,12 +12,12 @@ package com.leetcode;
  */
 public class GasStation {
     public static int[] gas = {4,4,4,4,7};
-    public static int[] cost = {8,5,2,6,4};
+    public static int[] cost = {3,5,2,6,4};
 
     /**
      * trick is  -
      * iterate through all the gas stations twice in loop try to calculate the gas left at every station
-     * if gas left at any station i snegative than that station cannot be start point. we have to start from the next station and check if thats valid
+     * if gas left at any station is negative than that station cannot be start point. we have to start from the next station and check if thats valid
      * after lopping if gas is still left and we approached the start station return it else return -1;
      * @param gas
      * @param cost
