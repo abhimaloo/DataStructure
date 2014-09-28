@@ -65,6 +65,6 @@ public class FindPossibleDecodingOfString {
 
     public static void main(String[] args) {
         //System.out.println(findPossibleDecoding("999"));
-        System.out.println(findPossibleDecodingDP("121"));
+        System.out.println(findPossibleDecodingDP("012"));
     }
 }
