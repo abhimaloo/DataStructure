@@ -10,6 +10,10 @@ public class GrayCode {
 
     public static List<Integer> grayCode(int n) {
         List<Integer> ret = new ArrayList<>();
+        if(n <= 0) {
+            return ret;
+        }
+
         ret.add(0);
         for (int i = 0; i < n; i++) {
             int size = ret.size();
@@ -20,7 +24,7 @@ public class GrayCode {
     }
 
     public static void main(String[] args) {
-        for(int i: grayCode(4)) {
+        for(int i: grayCode(1)) {
             System.out.println(i);
         }
     }

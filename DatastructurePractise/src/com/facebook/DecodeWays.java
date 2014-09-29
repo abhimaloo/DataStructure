@@ -147,7 +147,7 @@ public class DecodeWays {
                 // it could be '0' or somethig else.. if its zero is it making a valid composite code like '10' or '20'
                 if(code.substring(i-1, i+1).compareTo("10") >= 0 && code.substring(i-1, i+1).compareTo("26") <= 0) {
                     // if it is assign the ways of i-1 length string
-                    ways[i+1] = ways[i];
+                    ways[i+1] = ways[i-1];
                 } else {
                     // if it is not zero .. but other garbage special character etc.. return 0 right from here
                     return 0;
@@ -165,7 +165,7 @@ public class DecodeWays {
 
 
     public static void main(String[] args) {
-        System.out.println(decodeWays("113"));
+        System.out.println(decodeWays("1203"));
     }
 
 
