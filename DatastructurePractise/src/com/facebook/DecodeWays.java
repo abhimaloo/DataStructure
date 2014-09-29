@@ -7,37 +7,6 @@ public class DecodeWays {
 
 
 
-    public static int numDecodings(String s) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
-        if (s == null || s.equals("")) return 0;
-        char[] cc = s.toCharArray(); //conver to char array
-        int n = s.length(); //number of chars
-        int numEn[] = new int[n+1];
-        numEn[0] = 1;
-        if (cc[0] >= '1' && cc[0] <= '9') numEn[1] = 1;
-        else return 0;
-
-        for (int i = 1; i < n; i ++) {
-            if (cc[i] >= '1' && cc[i] <= '9') {
-                if (s.substring(i-1,i+1).compareTo("10") >= 0
-                        && s.substring(i-1,i+1).compareTo("26") <= 0) {
-                    numEn[i+1] = numEn[i] + numEn[i-1];
-                } else {
-                    numEn[i+1] = numEn[i];
-                }
-            } else {
-                if (s.substring(i-1,i+1).compareTo("10") >= 0
-                        && s.substring(i-1,i+1).compareTo("26") <= 0) {
-                    numEn[i+1] = numEn[i-1];
-                } else {
-                    return 0;
-                }
-            }
-        }
-
-        return numEn[n];
-    }
 
 
     /**

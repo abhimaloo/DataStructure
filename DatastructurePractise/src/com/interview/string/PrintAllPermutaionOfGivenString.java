@@ -11,7 +11,7 @@ package com.interview.string;
  * Created by abhimaloo on 8/6/14.
  */
 public class PrintAllPermutaionOfGivenString {
-    public static String input = "ABCD";
+    public static String input = "ABC";
 
     /**
      * trick is to use back tracking

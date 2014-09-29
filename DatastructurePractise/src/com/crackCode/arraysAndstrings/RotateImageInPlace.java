@@ -21,9 +21,13 @@ public class RotateImageInPlace {
             int offset = end - start;
             for( int i = 0; i< offset; i++ ) {
                 int temp = input[start+i][start];
+
                 input[start+i][start] = input[end][start + i];
+
                 input[end][start + i] = input[end - i][end];
+
                 input[end - i][end] = input[start][end - i];
+
                 input[start][end - i] = temp;
 
             }
@@ -33,5 +37,11 @@ public class RotateImageInPlace {
 
     public static void main(String[] args) {
        rotateImage(input);
+       for( int i = 0; i< input.length; i++) {
+           for(int j = 0; j< input[0].length; j++) {
+               System.out.print(" "+ input[i][j]+ " ");
+           }
+           System.out.println();
+       }
     }
 }

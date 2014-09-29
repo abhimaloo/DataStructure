@@ -12,7 +12,7 @@ package com.interview.arrays.dp;
  * Created by abhimaloo on 7/24/14.
  */
 public class MinNumberJumpsToReachEnd {
-    public static int[] input = {1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9};
+    public static int[] input = {2,3,1,1,4};
 
     public static int findMinJumps(int[] input) {
         int [] jumps = new int[input.length];

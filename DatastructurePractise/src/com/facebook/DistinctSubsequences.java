@@ -7,6 +7,13 @@ public class DistinctSubsequences {
     public static String s = "RABBBIT";
     public static String t = "RABBIT" ;
 
+    /**
+     * we check every element of s with every other element of t..
+     * if we find a character match  - that means,
+     * @param s
+     * @param t
+     * @return
+     */
     public static int numOfDistinctSubsequences(String s, String t) {
 
         int[][] count = new int[s.length()+1][t.length()+1];
