@@ -14,9 +14,8 @@ import java.util.List;
  */
 public class KMPPatternSearch {
 
-    public static String text = "@#BABCANXBABCCBABACBABCA";
-    // Only characters allowed in pattern..no special chars
-    public static String pattern = "BABCA";
+    public static String text = "THIS IS A TEST TEXT";
+    public static String pattern = "TEST";
 
     /**
      * ALgo : https://www.youtube.com/watch?v=iZ93Unvxwtw
@@ -43,7 +42,7 @@ public class KMPPatternSearch {
         int[][] dfa = buildDFA(pattern, dedup);
         int i=0;
         //this loop is to make sure we keep finding more than one match
-        while(i<text.length()){
+       // while(i<text.length()){
             int j=0;
             for( ; i<text.length() && j < pattern.length() ; i++){
                 //keep looking for the next step.. make sure the chartacter in text is a part of pattern
@@ -57,7 +56,7 @@ public class KMPPatternSearch {
                 //i-pattern.length() will give the start index from where the match begun
                 response.add(i-pattern.length());
             }
-        }
+       // }
 
         return response;
 
