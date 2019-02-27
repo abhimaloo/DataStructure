@@ -147,12 +147,13 @@ public class EightQueenProblem {
                 ,{0,0,0,0,0,0,0,0}};
 
         placeQueen(board,0);
+
         System.out.println("Solution is : ");
         printBoard(board);
 
     }
 
-    private static class Point {
+    public static class Point {
         public int x;
         public  int y;
         public Point(int x, int y) {
