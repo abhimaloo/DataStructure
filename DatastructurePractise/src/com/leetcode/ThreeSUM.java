@@ -16,7 +16,7 @@ public class ThreeSUM {
         //first of all sort the input
         QuickSort.sort(input, 0, input.length -1);
 
-        for( int i = 0; i< input.length ; i++) {
+        for (int i = 0; i < input.length; i++) {
 
             int start = i+1;
             int end = input.length -1;
