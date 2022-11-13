@@ -15,6 +15,7 @@ public class BestTimeToBuyAndSellStock1 {
     //trick is to find local minima and then find local maxima right away.. you will buy on local minima and sell on local maxima
     public static int buyAndSell(int[] ticker) {
 
+        int min = Integer.MAX_VALUE;
         int maxProfit = 0;
         for( int i = 1; i< ticker.length; i++) {
 
