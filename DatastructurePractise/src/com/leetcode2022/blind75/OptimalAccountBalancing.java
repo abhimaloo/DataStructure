@@ -28,7 +28,7 @@ public class OptimalAccountBalancing {
     public static int backtrack(Integer[] settlement, int idx) {
         /*
         Idea is everything to the left of index has been settled hence move the index to the first non-zero(unsettled)
-        debt.
+        debt .
          */
         while (idx < settlement.length && settlement[idx] == 0) {
             idx++;
