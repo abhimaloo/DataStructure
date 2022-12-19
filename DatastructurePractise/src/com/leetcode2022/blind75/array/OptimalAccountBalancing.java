@@ -1,4 +1,4 @@
-package com.leetcode2022.blind75;
+package com.leetcode2022.blind75.array;
 
 import javafx.util.Pair;
 

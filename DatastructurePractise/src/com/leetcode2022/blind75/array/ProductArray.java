@@ -1,4 +1,4 @@
-package com.leetcode2022.blind75;
+package com.leetcode2022.blind75.array;
 
 /*
 Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
