@@ -26,9 +26,37 @@ Constraints:
 1 <= nums.length <= 2 * 104
 -10 <= nums[i] <= 10
 The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
+
+solution hints:
+- Unlike sum, a negative total sum does not indicate the exit condition; in case of product; we should maintain
+for a subarray ending at i, the max product subarray would be one of the following -
+i. nums[i] is the maximum number
+ii. max[i-1] * nums[i] (for positive values)
+iii. min[i-1] * nums[i] (for negative value)
+
  */
 public class MaximumProductSubarray {
     public static int maxProduct(int[] nums) {
-        return 0;
+        if (nums.length == 0) return 0;
+
+        int maxProduct = nums[0];
+        int minEndingHere = nums[0];
+        int maxEndingHere = nums[0];
+
+        for (int i = 1; i < nums.length; i++) {
+            // negative case
+            if (nums[i] < 0) {
+                //swap max with min
+                int temp = minEndingHere;
+                minEndingHere = maxEndingHere;
+                maxEndingHere = temp;
+            }
+            // all positive value cases
+            maxEndingHere = Math.max(maxEndingHere * nums[i], nums[i]);
+            minEndingHere = Math.min(minEndingHere * nums[i], nums[i]);
+            maxProduct = Math.max(maxEndingHere, maxProduct);
+        }
+
+        return maxProduct;
     }
 }
