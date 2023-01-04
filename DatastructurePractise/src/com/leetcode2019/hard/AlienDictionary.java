@@ -50,7 +50,9 @@ public class AlienDictionary {
     public static String alienOrder(String[] words) {
         Stack<Character> result = new Stack<>();
         Map<Character, Set<Character>> graph = new HashMap<>();
-        buildGraph(words, graph);
+        if (!buildGraph(words, graph)) {
+            return "";
+        }
         Set<Character> visited = new HashSet<>();
         Set<Character> visiting = new HashSet<>();
 
@@ -86,7 +88,7 @@ public class AlienDictionary {
         return true;
     }
 
-    public static void buildGraph(String[] words, Map<Character, Set<Character>> graph) {
+    public static boolean buildGraph(String[] words, Map<Character, Set<Character>> graph) {
         for (int i = 0; i < words.length; i++) {
             for (int j = 0; j < words[i].length(); j++) {
                 if (!graph.containsKey(words[i].charAt(j))) {
@@ -95,6 +97,9 @@ public class AlienDictionary {
             }
             // starting from second word
             if (i + 1 < words.length) {
+                if (words[i].length() > words[i + 1].length() && words[i].startsWith(words[i + 1])) {
+                    return false;
+                }
                 int len = Math.min(words[i].length(), words[i + 1].length());
                 for (int j = 0; j < len; j++) {
                     if (words[i].charAt(j) != words[i + 1].charAt(j)) {
@@ -104,6 +109,7 @@ public class AlienDictionary {
                 }
             }
         }
+        return true;
     }
 
     public static void main(String[] args) {
