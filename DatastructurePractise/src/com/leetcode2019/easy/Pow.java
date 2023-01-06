@@ -18,10 +18,11 @@ public class Pow {
 
     public static double power(int a, int b) {
         if (b == 0) return 1;
+        double half = pow(a, b / 2);
         if (b % 2 == 0) {
-            return power(a, b / 2) * power(a, b / 2);
+            return half * half;
         } else {
-            return a * power(a, b - 1);
+            return a * half * half;
         }
     }
 
